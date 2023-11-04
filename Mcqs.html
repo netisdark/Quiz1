@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+#quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+button.option {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.option:hover {
+    background-color: #2980b9;
+}
+
+#result {
+    font-weight: bold;
+}
+
+h1 {
+    color: #333;
+}
+
+#question {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+#options-container {
+    text-align: left;
+}
+
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>Quiz App</h1>
+        <div id="question-container">
+            <p id="question">Question goes here</p>
+        </div>
+        <div id="options-container">
+            <button class="option" id="option1">Option 1</button>
+            <button class="option" id="option2">Option 2</button>
+            <button class="option" id="option4">Option 4</button>
+            <button class="option" id="option3">Option 3</button>
+        </div>
+        <div id="result-container">
+            <p id="result"></p>
+        </div>
+    </div>
+    <script>
+      const questions = [
+{
+    question: "In 'Cowboy Bebop,' what is the nickname for the bounty hunter Spike Spiegel's spaceship?",
+    options: ["Swordfish", "Bebop", "Red Tail", "Hammerhead"],
+    answer: 0
+},
+ {
+    question: "Which planet is known as the 'Red Planet'?",
+    options: ["Venus", "Mars", "Jupiter", "Saturn"],
+    answer: 1
+},
+
+ {
+    question: "Who is the author of 'The Great Gatsby'?",
+    options: ["F. Scott Fitzgerald", "Ernest Hemingway", "Mark Twain", "J.D. Salinger"],
+    answer: 0
+},
+{
+    question: "What is the chemical symbol for gold?",
+    options: ["Au", "Ag", "Fe", "Cu"],
+    answer: 0
+},
+{
+    question: "Which gas do plants absorb from the atmosphere during photosynthesis?",
+    options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+    answer: 1
+},
+{
+    question: "Who is the main antagonist in William Shakespeare's play 'Hamlet'?",
+    options: ["King Lear", "Macbeth", "Othello", "Claudius"],
+    answer: 3
+},
+
+{
+    question: "Which country is famous for its ancient pyramids, including the Great Pyramid of Giza?",
+    options: ["Greece", "Italy", "Egypt", "China"],
+    answer: 2
+},
+ {
+    question: "What is the largest mammal in the world?",
+    options: ["African Elephant", "Giraffe", "Blue Whale", "Hippopotamus"],
+    answer: 2
+},
+
+{
+    question: "Who painted the 'Mona Lisa'?",
+    options: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Michelangelo"],
+    answer: 1
+},
+{
+    question: "Which planet is known for its beautiful rings?",
+    options: ["Mars", "Jupiter", "Saturn", "Uranus"],
+    answer: 2
+},
+{
+    question: "What is the largest organ in the human body?",
+    options: ["Heart", "Liver", "Skin", "Brain"],
+    answer: 2
+},
+{
+    question: "Who is the creator of the 'Harry Potter' series?",
+    options: ["J.R.R. Tolkien", "J.K. Rowling", "George R.R. Martin", "Stephen King"],
+    answer: 1
+},
+{
+    question: "Which gas makes up the majority of Earth's atmosphere?",
+    options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+    answer: 2
+},
+{
+    question: "What is the chemical symbol for water?",
+    options: ["H2O", "CO2", "NaCl", "O2"],
+    answer: 0
+},
+{
+    question: "Which famous scientist is known for his theory of general relativity?",
+    options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Stephen Hawking"],
+    answer: 1
+},
+{
+    question: "In Greek mythology, who is the king of the gods?",
+    options: ["Hades", "Poseidon", "Zeus", "Apollo"],
+    answer: 2
+},
+{
+    question: "What is the chemical symbol for silver?",
+    options: ["Ag", "Au", "Fe", "Cu"],
+    answer: 0
+},
+{
+    question: "Which continent is the Sahara Desert located in?",
+    options: ["Asia", "Africa", "South America", "Australia"],
+    answer: 1
+},
+{
+    question: "What is the capital of France?",
+    options: ["Berlin", "London", "Madrid", "Paris"],
+    answer: 3
+},
+{
+    question: "Who wrote the play 'Romeo and Juliet'?",
+    options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Leo Tolstoy"],
+    answer: 0
+},
+{
+    question: "Which planet is often referred to as the 'Morning Star' or the 'Evening Star'?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    answer: 1
+},
+ {
+    question: "What is the largest organ in the human body?",
+    options: ["Liver", "Lungs", "Heart", "Skin"],
+    answer: 3
+},
+
+{
+    question: "Who wrote the novel '1984'?",
+    options: ["George Orwell", "Aldous Huxley", "Ray Bradbury", "F. Scott Fitzgerald"],
+    answer: 0
+},
+{
+    question: "Which gas is known as the 'silent killer' due to its colorless, odorless, and tasteless nature?",
+    options: ["Carbon Dioxide", "Oxygen", "Methane", "Carbon Monoxide"],
+    answer: 3
+},
+
+ {
+    question: "Which famous scientist formulated the laws of motion and universal gravitation?",
+    options: ["Galileo Galilei", "Isaac Newton", "Albert Einstein", "Stephen Hawking"],
+    answer: 1
+},
+
+{
+    question: "What is the chemical symbol for iron?",
+    options: ["Ag", "Au", "Fe", "Cu"],
+    answer: 2
+},
+
+{
+    question: "Which country is known as the Land of the Rising Sun?",
+    options: ["China", "India", "Japan", "South Korea"],
+    answer: 2
+},
+
+{
+    question: "What is the longest river in the world?",
+    options: ["Amazon River", "Nile River", "Mississippi River", "Yangtze River"],
+    answer: 1
+},
+
+{
+    question: "Who painted 'Starry Night'?",
+    options: ["Pablo Picasso", "Vincent van Gogh", "Leonardo da Vinci", "Claude Monet"],
+    answer: 1
+},
+
+{
+    question: "Which gas do plants release during photosynthesis?",
+    options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+    answer: 0
+}
+];
+
+const questionElement = document.getElementById("question");
+const options = document.querySelectorAll(".option");
+const resultElement = document.getElementById("result");
+
+var i,score;
+if(localStorage.getItem("lap")==null){
+ i=0;
+}else{
+ i=parseInt(localStorage.getItem("lap"));
+}
+let currentQuestion = i;
+if(localStorage.getItem("board")==null){
+ score=0;
+}else{
+ score=parseInt(localStorage.getItem("board"));
+}
+
+
+
+function checkAnswer(selectedOption) {
+    const current = questions[currentQuestion];
+    if (current.options[selectedOption] === current.options[current.answer]) {
+        score++;
+        localStorage.setItem("board",score);
+    }
+    
+    currentQuestion++;
+    
+    if (currentQuestion < questions.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+function loadQuestion() {
+    const current = questions[currentQuestion];
+    questionElement.textContent = current.question;
+    options.forEach((option, index) => {
+        option.textContent = current.options[index];
+        localStorage.setItem("lap", currentQuestion);
+    });
+    window.parent.postMessage('continue', "*");
+}
+function showResult() {
+    questionElement.style.display = "none";
+    options.forEach((option) => {
+        option.style.display = "none";
+    });
+    resultElement.textContent = `You scored ${score}/${questions.length}`;
+    window.parent.postMessage('stop', "*");
+}
+
+if (currentQuestion+1 < questions.length) {
+  
+        loadQuestion();
+    } else {
+        showResult();
+    }
+
+options.forEach((option, index) => {
+    option.addEventListener("click", () => {
+        checkAnswer(index);
+    });
+});
+// Called from the iframe
+
+window.onmessage = function(event){
+    if (event.data == 'message') {
+        localStorage.clear();
+    }
+};
+    </script>
+</body>
+</html>
